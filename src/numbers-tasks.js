@@ -267,8 +267,18 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+  let prev = 0;
+  let next = 1;
+  let fib = 1;
+  for (let i = 2; i <= index; i += 1) {
+    fib = prev + next;
+    prev = next;
+    next = fib;
+  }
+  return fib;
 }
 
 /**
@@ -282,8 +292,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  for (let i = 1; i <= n; i += 1) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -297,8 +311,10 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  return String(num)
+    .split('')
+    .reduce((acc, digit) => acc + Number(digit), 0);
 }
 
 /**
@@ -312,8 +328,15 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num < 1) return false;
+
+  let n = num;
+  while (n % 2 === 0) {
+    n /= 2;
+  }
+
+  return n === 1;
 }
 
 /**
